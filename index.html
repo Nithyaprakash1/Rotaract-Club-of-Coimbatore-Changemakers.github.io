@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rotaract Club of Coimbatore Changemakers</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -61,7 +59,7 @@
             position: relative;
             background:
                 linear-gradient(135deg, rgba(30, 58, 138, 0.85), rgba(29, 78, 216, 0.85)),
-                url('grp.jpg')
+                url('hero.jpg')
                 center/cover no-repeat;
         }
 
@@ -156,14 +154,10 @@
 </head>
 <body class="antialiased">
 
-    <!-- Header / Navbar -->
     <header id="main-header" class="bg-white shadow-md py-4 sticky top-0 z-50">
         <div class="container flex justify-between items-center">
             <a href="#" class="flex items-center space-x-3 max-w-xs md:max-w-none">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-blue-600 flex-shrink-0">
-                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM0 1.5a8.25 8.25 0 1 0 0 16.5 8.25 8.25 0 0 0 0-16.5ZM10.5 12a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" clip-rule="evenodd" />
-                    <path fill-rule="evenodd" d="M16.5 7.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3ZM7.5 7.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3ZM16.5 13.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3ZM7.5 13.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z" clip-rule="evenodd" />
-                </svg>
+                <img src="logo.png" alt="Rotaract Changemakers Logo" class="w-10 h-10 flex-shrink-0">
                 <span class="text-xl text-center md:text-left md:text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors">Rotaract Club of Coimbatore Changemakers</span>
             </a>
             <nav>
@@ -171,13 +165,13 @@
                     <li><a href="#about-rotaract" class="text-gray-600 hover:text-blue-600 font-medium">About Rotaract</a></li>
                     <li><a href="#about-district" class="text-gray-600 hover:text-blue-600 font-medium">District 3206</a></li>
                     <li><a href="#about-club" class="text-gray-600 hover:text-blue-600 font-medium">Our Club</a></li>
+                    <li><a href="#rotaract-impact" class="text-gray-600 hover:text-blue-600 font-medium">Impact</a></li>
                     <li><a href="#our-team" class="text-gray-600 hover:text-blue-600 font-medium">Our Team</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero-section text-white py-24 md:py-32 text-center reveal-section">
         <div class="container">
             <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
@@ -192,7 +186,6 @@
         </div>
     </section>
 
-    <!-- About Rotaract Section -->
     <section id="about-rotaract" class="py-16 bg-white reveal-section">
         <div class="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="flex justify-center items-center">
@@ -210,11 +203,10 @@
         </div>
     </section>
 
-    <!-- About Rotaract District 3206 Section -->
     <section id="about-district" class="py-16 bg-gray-50 reveal-section">
         <div class="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="md:order-2 flex justify-center items-center">
-                <img src="https://placehold.co/600x400/E0F2FE/1E3A8A?text=District+3206" alt="District 3206 Leadership" class="rounded-xl shadow-lg w-full h-auto object-cover animated-image">
+                <img src="3206.png" alt="District 3206 Leadership" class="rounded-xl shadow-lg w-full h-auto object-cover animated-image">
             </div>
             <div class="md:order-1">
                 <h2 class="section-heading">About District 3206</h2>
@@ -228,7 +220,6 @@
         </div>
     </section>
 
-    <!-- About Rotaract Club of Coimbatore Changemakers Section -->
     <section id="about-club" class="py-16 bg-white reveal-section">
         <div class="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="flex justify-center items-center">
@@ -246,12 +237,32 @@
         </div>
     </section>
 
-    <!-- Our Leadership Team Section -->
-    <section id="our-team" class="py-16 bg-gray-50 reveal-section">
+    <section id="rotaract-impact" class="py-16 bg-gray-50 reveal-section">
+        <div class="container">
+            <h2 class="section-heading text-center">Our Impact in Numbers</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto mt-10">
+
+                <div class="card text-center border-b-8 border-blue-800 p-8">
+                    <p class="text-7xl font-extrabold text-blue-700 mb-2" id="projects-count">0</p>
+                    <p class="text-2xl font-semibold text-gray-800">Projects Completed</p>
+                    <p class="text-md text-gray-500 mt-2">Community, Club, and Professional Service</p>
+                </div>
+
+                <div class="card text-center border-b-8 border-blue-400 p-8">
+                    <p class="text-7xl font-extrabold text-blue-900 mb-2" id="members-count">0</p>
+                    <p class="text-2xl font-semibold text-gray-800">Dedicated Members</p>
+                    <p class="text-md text-gray-500 mt-2">Leaders committed to Service Above Self</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="our-team" class="py-16 bg-white reveal-section">
         <div class="container">
             <h2 class="section-heading text-center">Our Leadership Team</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                <!-- Member Cards -->
                 <div class="card flex flex-col items-center text-center">
                     <img src="vishnu.jpg" alt="Rtr. Vishnushankar" class="rounded-full w-24 h-24 object-cover mb-4 ring-2 ring-blue-500">
                     <h3 class="text-xl font-bold text-blue-800">Rtr. Vishnushankar</h3>
@@ -331,18 +342,16 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-gray-900 text-gray-300 py-10">
         <div class="container text-center text-sm">
+            <img src="logo.png" alt="Rotaract Changemakers Logo" class="w-8 h-8 mx-auto mb-2 opacity-50">
             <p>&copy; 2025 Rotaract Club of Coimbatore Changemakers. All rights reserved.</p>
             <p class="mt-2">Rooted in the guiding principle of Service Above Self.</p>
         </div>
     </footer>
 
-    <!-- Cursor Follower Element -->
     <div class="cursor-follower"></div>
 
-    <!-- Back to Top Button -->
     <button id="back-to-top" title="Go to top">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
@@ -350,14 +359,52 @@
     </button>
 
     <script>
+        // Function to handle the counting animation
+        const countUp = (targetElement, endValue, duration) => {
+            const startValue = 0;
+            let startTime = null;
+
+            const step = (timestamp) => {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                const currentValue = Math.floor(progress * (endValue - startValue) + startValue);
+                // Use toLocaleString for number formatting (e.g., 1,500) - not necessary for small numbers but good practice
+                targetElement.textContent = currentValue.toLocaleString();
+
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
-            // Scroll reveal animation
+            // Scroll reveal animation and Number Counting
             const revealSections = document.querySelectorAll('.reveal-section');
+            const impactSection = document.getElementById('rotaract-impact'); // Target the new impact section
+            let hasCounted = false;
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
+
+                        // Check if the intersecting section is the rotaract-impact section
+                        if (entry.target.id === 'rotaract-impact' && !hasCounted) {
+                            const projectsCount = document.getElementById('projects-count');
+                            const membersCount = document.getElementById('members-count');
+
+                            // Start the counting animation for Projects (35) and Members (15)
+                            countUp(projectsCount, 35, 2000); // 2000ms = 2 seconds
+                            countUp(membersCount, 15, 2000); // 2000ms = 2 seconds
+
+                            hasCounted = true;
+                        }
+
+                        // Unobserve the element after it has become visible
+                        if (entry.target.id !== 'rotaract-impact') {
+                             observer.unobserve(entry.target);
+                        }
                     }
                 });
             }, { threshold: 0.1 });
