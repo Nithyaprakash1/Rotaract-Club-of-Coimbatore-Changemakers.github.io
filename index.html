@@ -356,9 +356,9 @@
         </svg>
     </button>
 
-    <script>
+<script>
         // Function to handle the counting animation
-        const countUp = (targetElement, endValue, duration) => {
+        const countUp = (targetElement, endValue, duration, appendText = '') => {
             const startValue = 0;
             let startTime = null;
 
@@ -366,11 +366,15 @@
                 if (!startTime) startTime = timestamp;
                 const progress = Math.min((timestamp - startTime) / duration, 1);
                 const currentValue = Math.floor(progress * (endValue - startValue) + startValue);
-                // Use toLocaleString for number formatting (e.g., 1,500) - not necessary for small numbers but good practice
-                targetElement.textContent = currentValue.toLocaleString();
+
+                // Set the text content directly
+                targetElement.textContent = currentValue;
 
                 if (progress < 1) {
                     window.requestAnimationFrame(step);
+                } else {
+                    // Append the custom text (like '+') only when the animation is finished
+                    targetElement.textContent += appendText;
                 }
             };
             window.requestAnimationFrame(step);
@@ -379,7 +383,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Scroll reveal animation and Number Counting
             const revealSections = document.querySelectorAll('.reveal-section');
-            const impactSection = document.getElementById('rotaract-impact'); // Target the new impact section
+            const impactSection = document.getElementById('rotaract-impact');
             let hasCounted = false;
 
             const observer = new IntersectionObserver((entries) => {
@@ -392,16 +396,19 @@
                             const projectsCount = document.getElementById('projects-count');
                             const membersCount = document.getElementById('members-count');
 
-                            // Start the counting animation for Projects (35) and Members (15)
-                            countUp(projectsCount, 35+, 2000); // 2000ms = 2 seconds
-                            countUp(membersCount, 15, 2000); // 2000ms = 2 seconds
+                            // Start the counting animation for Projects (35+) and Members (15)
+                            // Projects: Pass 35 as the number, and '+' as the text to append
+                            countUp(projectsCount, 35, 2000, '+'); 
+                            
+                            // Members: Pass 15 as the number, no text to append
+                            countUp(membersCount, 15, 2000, ''); 
 
                             hasCounted = true;
                         }
 
                         // Unobserve the element after it has become visible
                         if (entry.target.id !== 'rotaract-impact') {
-                             observer.unobserve(entry.target);
+                            observer.unobserve(entry.target);
                         }
                     }
                 });
@@ -442,6 +449,7 @@
     </script>
 </body>
 </html>
+
 
 
 
