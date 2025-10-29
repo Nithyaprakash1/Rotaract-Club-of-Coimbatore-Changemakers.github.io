@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotaract Club of Coimbatore Changemakers</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            overflow-x: hidden;
+            cursor: none;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        /* Big, half-underlined section heading */
+        .section-heading {
+            @apply text-5xl md:text-6xl font-extrabold text-blue-900 mb-10 relative pb-4;
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 120px;
+            height: 5px;
+            background-color: #3b82f6;
+            border-radius: 2px;
+        }
+        .section-heading.text-center::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-paragraph {
+            @apply text-lg text-gray-700 leading-relaxed mb-4;
+        }
+        .card {
+            @apply bg-white rounded-xl shadow-lg p-6 transition-transform duration-300;
+        }
+        .card:hover, .animated-image:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .animated-image {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Hero Section with background image */
+        .hero-section {
+            position: relative;
+            background:
+                linear-gradient(135deg, rgba(30, 58, 138, 0.85), rgba(29, 78, 216, 0.85)),
+                url('grp.jpg')
+                center/cover no-repeat;
+        }
+
+        /* Scroll reveal animation */
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Cursor Follower */
+        .cursor-follower {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: rgba(59, 130, 246, 0.4);
+            pointer-events: none;
+            transition: transform 0.1s ease-out, background-color 0.2s ease, width 0.2s ease, height 0.2s ease;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+        @media (pointer: coarse) {
+            .cursor-follower { display: none; }
+            body { cursor: auto; }
+        }
+        a:hover ~ .cursor-follower, button:hover ~ .cursor-follower, .card:hover ~ .cursor-follower {
+            background-color: rgba(239, 68, 68, 0.6);
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Glassmorphism Header on Scroll */
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        header {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1e3a8a;
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+            transform: translateY(20px);
+            z-index: 1000;
+        }
+        #back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        #back-to-top:hover {
+            background-color: #3b82f6;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 767px) {
+            header .container {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            header nav ul {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header / Navbar -->
+    <header id="main-header" class="bg-white shadow-md py-4 sticky top-0 z-50">
+        <div class="container flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-3 max-w-xs md:max-w-none">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-blue-600 flex-shrink-0">
+                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM0 1.5a8.25 8.25 0 1 0 0 16.5 8.25 8.25 0 0 0 0-16.5ZM10.5 12a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd" d="M16.5 7.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3ZM7.5 7.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3ZM16.5 13.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3ZM7.5 13.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-xl text-center md:text-left md:text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors">Rotaract Club of Coimbatore Changemakers</span>
+            </a>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#about-rotaract" class="text-gray-600 hover:text-blue-600 font-medium">About Rotaract</a></li>
+                    <li><a href="#about-district" class="text-gray-600 hover:text-blue-600 font-medium">District 3206</a></li>
+                    <li><a href="#about-club" class="text-gray-600 hover:text-blue-600 font-medium">Our Club</a></li>
+                    <li><a href="#our-team" class="text-gray-600 hover:text-blue-600 font-medium">Our Team</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white py-24 md:py-32 text-center reveal-section">
+        <div class="container">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+                Uniting Young People for <br class="hidden md:block"> Sustainable Change
+            </h1>
+            <p class="text-xl md:text-2xl font-light mb-8 max-w-3xl mx-auto">
+                Rooted in "Service Above Self," Rotaract empowers leaders to make a lasting difference.
+            </p>
+            <a href="#about-club" class="inline-block bg-white text-blue-700 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors shadow-md">
+                Discover Our Impact
+            </a>
+        </div>
+    </section>
+
+    <!-- About Rotaract Section -->
+    <section id="about-rotaract" class="py-16 bg-white reveal-section">
+        <div class="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="flex justify-center items-center">
+                <img src="https://placehold.co/600x400/E0F2FE/1E3A8A?text=Global+Impact" alt="Rotaract Global Impact" class="rounded-xl shadow-lg w-full h-auto object-cover animated-image">
+            </div>
+            <div>
+                <h2 class="section-heading">About Rotaract</h2>
+                <p class="section-paragraph">
+                    Rooted in the guiding principle of Service Above Self, Rotaract is a global movement that unites young people in the pursuit of sustainable development and meaningful change. With a diverse network of students and professionals, it fosters leadership, collaboration, and a passion for community service.
+                </p>
+                <p class="section-paragraph">
+                    Members grow as leaders by planning impactful events, leading service projects, and driving initiatives in areas such as environmental sustainability, education, and healthcare. At its heart, Rotaract is about purposeful action—empowering individuals to give back, create real impact, and make a lasting difference in their communities and beyond.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Rotaract District 3206 Section -->
+    <section id="about-district" class="py-16 bg-gray-50 reveal-section">
+        <div class="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="md:order-2 flex justify-center items-center">
+                <img src="https://placehold.co/600x400/E0F2FE/1E3A8A?text=District+3206" alt="District 3206 Leadership" class="rounded-xl shadow-lg w-full h-auto object-cover animated-image">
+            </div>
+            <div class="md:order-1">
+                <h2 class="section-heading">About District 3206</h2>
+                <p class="section-paragraph">
+                    Rotaract District 3206, headquartered in Coimbatore, Tamil Nadu, is a vibrant network of young leaders committed to the motto “See Beyond, Serve Ahead”. Operating under Rotary International, the district unites students and professionals to drive impactful initiatives in healthcare, education, environmental sustainability, and community development. Guided by a dedicated leadership team-including District Governor Rtn. MD. Chella K. Raghavendran, District Rotaract Chair Rtn. MD. Fredrick John, District Rotaract Representative Rtr. Gogul, and DRR-Elect Rtr. MPHF. Vijay Vignesh VK–District 3206 fosters leadership, collaboration, and service among its members.
+                </p>
+                 <p class="section-paragraph">
+                    With a strong presence in Coimbatore and surrounding regions, it connects to the global Rotaract family of over 1.2 million members in more than 200 countries, offering opportunities for cultural exchange, professional growth, and international fellowship. Every project undertaken reflects the district's dedication to Service Above Self, empowering young people to create meaningful change in their communities and beyond.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Rotaract Club of Coimbatore Changemakers Section -->
+    <section id="about-club" class="py-16 bg-white reveal-section">
+        <div class="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="flex justify-center items-center">
+                <img src="https://placehold.co/600x400/E0F2FE/1E3A8A?text=Changemakers" alt="Changemakers Club" class="rounded-xl shadow-lg w-full h-auto object-cover animated-image">
+            </div>
+            <div>
+                <h2 class="section-heading">Our Club</h2>
+                <p class="section-paragraph">
+                    Rotaract Club of Coimbatore Changemakers is a newly chartered (2025) community-based Rotaract Club operating under Rotary International District 3206. Based in Coimbatore, Tamil Nadu, the club is parented by the Rotary E-Club of Coimbatore Changemakers.
+                </p>
+                <p class="section-paragraph">
+                    The club was chartered in 2025 with Rtr. Vishnushankar serving as its Charter President for the year 2025–26. As a community-based club, it welcomes members from diverse professional, academic, and entrepreneurial backgrounds, offering opportunities for service, leadership development, and fellowship.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Leadership Team Section -->
+    <section id="our-team" class="py-16 bg-gray-50 reveal-section">
+        <div class="container">
+            <h2 class="section-heading text-center">Our Leadership Team</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Member Cards -->
+                <div class="card flex flex-col items-center text-center">
+                    <img src="vishnu.jpg" alt="Rtr. Vishnushankar" class="rounded-full w-24 h-24 object-cover mb-4 ring-2 ring-blue-500">
+                    <h3 class="text-xl font-bold text-blue-800">Rtr. Vishnushankar</h3>
+                    <p class="text-gray-600">President</p>
+                </div>
+                <div class="card flex flex-col items-center text-center">
+                    <img src="sobana.jpg" alt="Rtr. Sobana" class="rounded-full w-24 h-24 object-cover mb-4 ring-2 ring-blue-500">
+                    <h3 class="text-xl font-bold text-blue-800">Rtr. Sobana</h3>
+                    <p class="text-gray-600">Secretary Administration</p>
+                </div>
+                <div class="card flex flex-col items-center text-center">
+                    <img src="naveen.jpg" alt="Rtr. Naveen Prashath" class="rounded-full w-24 h-24 object-cover mb-4 ring-2 ring-blue-500">
+                    <h3 class="text-xl font-bold text-blue-800">Rtr. Naveen Prashath</h3>
+                    <p class="text-gray-600">Secretary Communication</p>
+                </div>
+                <div class="card flex flex-col items-center text-center">
+                    <img src="sanjay.jpg" alt="Rtr. Sanjay" class="rounded-full w-24 h-24 object-cover mb-4 ring-2 ring-blue-500">
+                    <h3 class="text-xl font-bold text-blue-800">Rtr. Sanjay</h3>
+                    <p class="text-gray-600">Vice president</p>
+                </div>
+                <div class="card flex flex-col items-center text-center">
+                    <img src="https://placehold.co/100x100/A7D3FF/000000?text=Rtr." alt="Rtr. Mridula" class="rounded-full w-24 h-24 object-cover mb-4 ring-2 ring-blue-500">
+                    <h3 class="text-xl font-bold text-blue-800">Rtr. Mridula</h3>
+                    <p class="text-gray-600">Treasurer</p>
+                </div>
+                <div class="card flex flex-col items-center text-center">
+                    <img src="https://placehold.co/100x100/A7D3FF/000000?text=Rtr." alt="Rtr. Muthuraj" class="rounded-full w-24 h-24 object-cover mb-4 ring-2 ring-blue-500">
+                    <h3 class="text-xl font-bold text-blue-800">Rtr. Muthuraj</h3>
+                    <p class="text-gray-600">Director Community service</p>
+                </div>
+                <div class="card flex flex-col items-center text-center">
+                    <img src="akilin.jpg" alt="Rtr. Akilan" class="rounded-full w-24 h-24 object-cover mb-4 ring-2 ring-blue-500">
+                    <h3 class="text-xl font-bold text-blue-800">Rtr. Akilan</h3>
+                    <p class="text-gray-600">Director club service</p>
+                </div>
+                <div class="card flex flex-col items-center text-center">
+                    <img src="https://placehold.co/100x100/A7D3FF/000000?text=Rtr." alt="Rtr. Joey Tristen" class="rounded-full w-24 h-24 object-cover mb-4 ring-2 ring-blue-500">
+                    <h3 class="text-xl font-bold text-blue-800">Rtr. Joey Tristen</h3>
+                    <p class="text-gray-600">Director Professional Service</p>
+                </div>
+                <div class="card flex flex-col items-center text-center">
+                    <img src="https://placehold.co/100x100/A7D3FF/000000?text=Rtr." alt="Rtr. Raghavi" class="rounded-full w-24 h-24 object-cover mb-4 ring-2 ring-blue-500">
+                    <h3 class="text-xl font-bold text-blue-800">Rtr. Raghavi</h3>
+                    <p class="text-gray-600">Director international Service</p>
+                </div>
+                <div class="card flex flex-col items-center text-center">
+                    <img src="https://placehold.co/100x100/A7D3FF/000000?text=Rtr." alt="Rtr. Prawin" class="rounded-full w-24 h-24 object-cover mb-4 ring-2 ring-blue-500">
+                    <h3 class="text-xl font-bold text-blue-800">Rtr. Prawin</h3>
+                    <p class="text-gray-600">Sergeant at arms</p>
+                </div>
+                <div class="card flex flex-col items-center text-center">
+                    <img src="https://placehold.co/100x100/A7D3FF/000000?text=Rtr." alt="Rtr. Pranesh" class="rounded-full w-24 h-24 object-cover mb-4 ring-2 ring-blue-500">
+                    <h3 class="text-xl font-bold text-blue-800">Rtr. Pranesh</h3>
+                    <p class="text-gray-600">Chair public image</p>
+                </div>
+                <div class="card flex flex-col items-center text-center">
+                    <img src="https://placehold.co/100x100/A7D3FF/000000?text=Rtr." alt="Rtr. Poorna Shruthi" class="rounded-full w-24 h-24 object-cover mb-4 ring-2 ring-blue-500">
+                    <h3 class="text-xl font-bold text-blue-800">Rtr. Poorna Shruthi</h3>
+                    <p class="text-gray-600">Young leaders Contact</p>
+                </div>
+                <div class="card flex flex-col items-center text-center">
+                    <img src="nithi.jpg" alt="Rtr. Nithya Prakash" class="rounded-full w-24 h-24 object-cover mb-4 ring-2 ring-blue-500">
+                    <h3 class="text-xl font-bold text-blue-800">Rtr. Nithya Prakash</h3>
+                    <p class="text-gray-600">Learning Facilitator</p>
+                </div>
+                <div class="card flex flex-col items-center text-center">
+                    <img src="https://placehold.co/100x100/A7D3FF/000000?text=Rtr." alt="Rtr. Suriyanarayanan" class="rounded-full w-24 h-24 object-cover mb-4 ring-2 ring-blue-500">
+                    <h3 class="text-xl font-bold text-blue-800">Rtr. Suriyanarayanan</h3>
+                    <p class="text-gray-600">Chair Membership</p>
+                </div>
+                <div class="card flex flex-col items-center text-center">
+                    <img src="https://placehold.co/100x100/A7D3FF/000000?text=Rtr." alt="Rtr. Sanjay Ganesan" class="rounded-full w-24 h-24 object-cover mb-4 ring-2 ring-blue-500">
+                    <h3 class="text-xl font-bold text-blue-800">Rtr. Sanjay Ganesan</h3>
+                    <p class="text-gray-600">Chair TRF</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-10">
+        <div class="container text-center text-sm">
+            <p>&copy; 2025 Rotaract Club of Coimbatore Changemakers. All rights reserved.</p>
+            <p class="mt-2">Rooted in the guiding principle of Service Above Self.</p>
+        </div>
+    </footer>
+
+    <!-- Cursor Follower Element -->
+    <div class="cursor-follower"></div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Go to top">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+        </svg>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Scroll reveal animation
+            const revealSections = document.querySelectorAll('.reveal-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            revealSections.forEach(section => observer.observe(section));
+
+            // Cursor Follower
+            if (window.matchMedia("(pointer: fine)").matches) {
+                const cursorFollower = document.querySelector('.cursor-follower');
+                let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
+                document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+                function animateCursor() {
+                    followerX += (mouseX - followerX) * 0.1;
+                    followerY += (mouseY - followerY) * 0.1;
+                    cursorFollower.style.transform = `translate(${followerX}px, ${followerY}px) translate(-50%, -50%)`;
+                    requestAnimationFrame(animateCursor);
+                }
+                animateCursor();
+            }
+
+            // Smooth scrolling for anchors
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            // Back to Top & Scrolled Header Logic
+            const header = document.getElementById('main-header');
+            const backToTopButton = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('scrolled', window.scrollY > 50);
+                backToTopButton.classList.toggle('visible', window.scrollY > 200);
+            });
+            backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        });
+    </script>
+</body>
+</html>
